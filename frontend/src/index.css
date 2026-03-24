@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+
+body {
+  background:
+    radial-gradient(1400px 700px at 10% 0%, rgba(212,168,67,0.07), transparent),
+    radial-gradient(1000px 600px at 85% 10%, rgba(192,57,43,0.05), transparent),
+    radial-gradient(1200px 500px at 50% 120%, rgba(56,189,248,0.04), transparent),
+    #0a0a0f;
+  color: #e8e4df;
+  font-family: 'Inter', 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* ─── Glass Panel ─── */
+.glass {
+  background: linear-gradient(180deg, rgba(22,22,31,0.82), rgba(10,10,15,0.78));
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(212,168,67,0.08);
+  border-radius: 16px;
+}
+
+/* ─── Cinema Vignette ─── */
+.cinema-vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.55) 100%);
+  z-index: 1;
+}
+
+/* ─── Studio Beam ─── */
+.studio-beam {
+  background: linear-gradient(
+    120deg,
+    rgba(212,168,67,0.06) 0%,
+    rgba(212,168,67,0.02) 20%,
+    transparent 40%,
+    rgba(192,57,43,0.04) 65%,
+    transparent 100%
+  );
+}
+
+/* ─── Projector Light Sweep ─── */
+.projector-sweep::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, rgba(212,168,67,0.03) 45%, rgba(212,168,67,0.06) 50%, rgba(212,168,67,0.03) 55%, transparent 100%);
+  animation: projectorSweep 12s linear infinite;
+  z-index: 0;
+}
+
+/* ─── Film Grain Overlay ─── */
+.film-grain {
+  position: relative;
+}
+.film-grain::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
+  background-size: 250px 250px;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  z-index: 2;
+}
+
+/* ─── Film Sprocket Holes (decorative) ─── */
+.film-sprockets {
+  background-image:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0px, transparent 16px,
+      rgba(212,168,67,0.08) 16px, rgba(212,168,67,0.08) 20px,
+      transparent 20px, transparent 36px
+    );
+  background-size: 12px 36px;
+  background-position: 0 0;
+}
+
+/* ─── Cinematic Scrollbar ─── */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: rgba(10,10,15,0.5);
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(212,168,67,0.25);
+  border-radius: 999px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(212,168,67,0.45);
+}
+
+/* ─── Cinema Button ─── */
+.cinema-btn {
+  background: linear-gradient(135deg, rgba(212,168,67,0.15), rgba(212,168,67,0.05));
+  border: 1px solid rgba(212,168,67,0.2);
+  color: #d4a843;
+  transition: all 0.2s ease;
+}
+.cinema-btn:hover {
+  background: linear-gradient(135deg, rgba(212,168,67,0.25), rgba(212,168,67,0.1));
+  border-color: rgba(212,168,67,0.4);
+  box-shadow: 0 0 20px rgba(212,168,67,0.15);
+}
+
+/* ─── Cinema Card ─── */
+.cinema-card {
+  background: linear-gradient(145deg, rgba(22,22,31,0.9), rgba(10,10,15,0.95));
+  border: 1px solid rgba(212,168,67,0.06);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+.cinema-card:hover {
+  border-color: rgba(212,168,67,0.2);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.4), 0 0 20px rgba(212,168,67,0.08);
+  transform: translateY(-2px);
+}

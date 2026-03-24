@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+networkx
+numpy
+pydantic
+pydantic-settings
+python-multipart
+tenacity
+openai
+spacy
+
